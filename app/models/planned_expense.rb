@@ -1,0 +1,2 @@
+class PlannedExpense < ApplicationRecord
+end
