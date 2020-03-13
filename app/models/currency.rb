@@ -1,6 +1,6 @@
 class Currency < ApplicationRecord
 
-    has_many :destinations
-    has_many :values
+    belongs_to :destination
+    belongs_to :value
 
 end

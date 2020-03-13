@@ -15,23 +15,24 @@ user1 = User.create(name: 'Jacob', phone: '5707161763', username: 'kennja05', em
 user2 = User.create(name: 'Megan', phone: '9087701138', username: 'mcdomeg24', email: 'meganmcdonald24@gmail.com', password: '123', image: '')
 
 API_KEY = ENV['exchangeRateApiKey']
-currencies= JSON.parse(RestClient.get("http://data.fixer.io/api/latest?access_key=#{API_KEY}"))
-currencies['rates'].each do |currency|
-    #each item is an array with two items - code, and current exchange rate to the euro. 
-    
-    Value.create(date: Date.today.to_s, code: currency[0], rate: currency[1])
-end 
+currencies= JSON.parse(RestClient.get("http://data.fixer.io/api/latest?access_key=#{API_KEY}&base=usd"))
+i = 0
+while i < currencies['rates'].length
+    Value.create(date: currencies['date'], code: currencies['rates'].keys[i], rate: currencies['rates'].values[i]) 
+i += 1
+end
 
 
 #Creating destination to match with currency codes. I have selected the most-relevant currecies for destinations with multiple options 
-destinations = JSON.parse(RestClient.get('https://restcountries.eu/rest/v2/all'))
-destinations.each do |country| 
-    if country['name'] === "Antarctica" || country['name'] === "Virgin Islands (British)" || country['name'] === "Micronesia (Federated States of)" || country['name'] === "Palau" || country['name'] === "Singapore"
-        Destination.create(name: country['name'], code: country['currencies'][1]['code'], symbol: country['currencies'][1]['symbol'], currency_name: country['currencies'][1]['name'])
-    elsif country['name'] === "Zimbabwe"
-        Destination.create(name: country['name'], code: country['currencies'][7]['code'], symbol: country['currencies'][7]['symbol'], currency_name: country['currencies'][7]['name'])
-    else
-        Destination.create(name: country['name'], code: country['currencies'][0]['code'], symbol: country['currencies'][0]['symbol'], currency_name: country['currencies'][0]['name'])    
-    end
-end 
+# destinations = JSON.parse(RestClient.get('https://restcountries.eu/rest/v2/all'))
+# destinations.each do |country| 
+#     if country['name'] === "Antarctica" || country['name'] === "Virgin Islands (British)" || country['name'] === "Micronesia (Federated States of)" || country['name'] === "Palau" || country['name'] === "Singapore"
+#         myDest = Destination.create(name: country['name'], native_name: country['nativeName'], capital: country['capital'], code: country['currencies'][1]['code'], symbol: country['currencies'][1]['symbol'], currency_name: country['currencies'][1]['name'])
+#         # byebug
+#     elsif country['name'] === "Zimbabwe"
+#         Destination.create(name: country['name'], native_name: country['nativeName'], capital: country['capital'], code: country['currencies'][7]['code'], symbol: country['currencies'][7]['symbol'], currency_name: country['currencies'][7]['name'])
+#     else
+#         Destination.create(name: country['name'], native_name: country['nativeName'], capital: country['capital'], code: country['currencies'][0]['code'], symbol: country['currencies'][0]['symbol'], currency_name: country['currencies'][0]['name'])    
+#     end
+# end 
 
