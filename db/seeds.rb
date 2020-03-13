@@ -15,21 +15,22 @@ user1 = User.create(name: 'Jacob', phone: '5707161763', username: 'kennja05', em
 
 API_KEY = ENV['exchangeRateApiKey']
 
-currencies= JSON.parse(RestClient.get("http://data.fixer.io/api/latest?access_key=#{API_KEY}"))
-currencies['rates'].each do |currency|
-    byebug
-end 
+# currencies= JSON.parse(RestClient.get("http://data.fixer.io/api/latest?access_key=#{API_KEY}"))
+# currencies['rates'].each do |currency|
+#     byebug
+# end 
 
 
 #Creating destination to match with currency codes. I have selected the most-relevant currecies for destinations with multiple options 
 countries = JSON.parse(RestClient.get('https://restcountries.eu/rest/v2/all'))
 countries.each do |country| 
     if country['name'] === "Antarctica" || country['name'] === "Virgin Islands (British)" || country['name'] === "Micronesia (Federated States of)" || country['name'] === "Palau" || country['name'] === "Singapore"
-        Destination.create(name: country['name'], code: country['currencies'][1]['code'], symbol: country['currencies'][1]['symbol'])
+        Destination.create(name: country['name'], code: country['currencies'][1]['code'], symbol: country['currencies'][1]['symbol'], currency_name: country['currencies'][1]['name'])
     elsif country['name'] === "Zimbabwe"
-        Destination.create(name: country['name'], code: country['currencies'][7]['code'], symbol: country['currencies'][7]['symbol'])
+        byebug
+        Destination.create(name: country['name'], code: country['currencies'][7]['code'], symbol: country['currencies'][7]['symbol'], currency_name: country['currencies'][7]['name'])
     else
-        Destination.create(name: country['name'], code: country['currencies'][0]['code'], symbol: country['currencies'][0]['symbol'])    
+        Destination.create(name: country['name'], code: country['currencies'][0]['code'], symbol: country['currencies'][0]['symbol'], currency_name: country['currencies'][0]['name'])    
     end
 end 
 
