@@ -10,16 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_13_021822) do
+ActiveRecord::Schema.define(version: 2020_03_13_140918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "api_v1_values", force: :cascade do |t|
-    t.integer "rate"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
 
   create_table "currencies", force: :cascade do |t|
     t.string "code"
@@ -65,6 +59,14 @@ ActiveRecord::Schema.define(version: 2020_03_13_021822) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "values", force: :cascade do |t|
+    t.integer "rate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.date "date"
+    t.string "code"
   end
 
 end
