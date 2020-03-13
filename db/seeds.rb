@@ -16,7 +16,7 @@ user1 = User.create(name: 'Jacob', phone: '5707161763', username: 'kennja05', em
 API_KEY = ENV['exchangeRateApiKey']
 
 currencies= JSON.parse(RestClient.get("http://data.fixer.io/api/latest?access_key=#{API_KEY}"))
-currencies.each do |currency|
+currencies['rates'].each do |currency|
     byebug
 end 
 
