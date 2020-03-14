@@ -35,5 +35,5 @@ end
 Destination.all.each do |destination| 
     valId = Value.all.select {|value| value.code === destination.code}
     myCurrency = Currency.create(destination_id: destination.id, value_id: valId)
-    byebug
+    
 end 

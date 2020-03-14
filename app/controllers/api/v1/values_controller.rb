@@ -6,7 +6,7 @@ class Api::V1::ValuesController < ApplicationController
     end 
 
     def show
-        value = Value.find_by(params['id'])
+        value = Value.find(params['id'])
         render json: value
     end
 
