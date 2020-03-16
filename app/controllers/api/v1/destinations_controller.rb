@@ -10,4 +10,12 @@ class Api::V1::DestinationsController < ApplicationController
         render json: destination, include: [:currencies, :values]
     end 
 
+    def topDestinations 
+        topDestinations = Destination.all.sort_by {|destination| destination.trips.count}.reverse.slice(0,5)
+        render json: topDestinations, include: :trips
+    end
+
+    # games = Game.all.sort_by {|game| [game.moves, game.time] }.slice(0, 10)
+
+
 end
