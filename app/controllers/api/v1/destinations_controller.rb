@@ -15,7 +15,6 @@ class Api::V1::DestinationsController < ApplicationController
         render json: topDestinations, include: :trips
     end
 
-    # games = Game.all.sort_by {|game| [game.moves, game.time] }.slice(0, 10)
 
 
 end

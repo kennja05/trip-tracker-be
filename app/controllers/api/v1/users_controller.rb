@@ -12,6 +12,7 @@ class Api::V1::UsersController < ApplicationController
 
     def create 
         user = User.create(userParams)
+        render json: user
     end
 
     private 
