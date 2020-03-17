@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'api/v1/users/:id/trips', to: 'api/v1/users#userTrips'
   namespace :api do
     namespace :v1 do
       resources :users

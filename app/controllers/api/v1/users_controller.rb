@@ -19,6 +19,12 @@ class Api::V1::UsersController < ApplicationController
         end
     end
 
+    def userTrips
+        user = User.find(params['id'])
+        myTrips = Trip.all.where(user_id: user.id)
+        render json: myTrips
+    end 
+
     private 
 
     def userParams
