@@ -9,10 +9,14 @@ class Api::V1::UsersController < ApplicationController
         user = User.find(params['id'])
         render json: user
     end 
-
+ 
     def create 
-        user = User.create(userParams)
-        render json: user
+        user = User.new(userParams)
+        if user.save
+            render json: user
+        else  
+            render json: {errors: user.errors.full_messages} 
+        end
     end
 
     private 
