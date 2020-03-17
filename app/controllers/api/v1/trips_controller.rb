@@ -10,4 +10,19 @@ class Api::V1::TripsController < ApplicationController
         render json: trip 
     end 
 
+    def create 
+        trip = Trip.new(tripParams)
+        if trip.save
+            render json: trip
+        else
+            byebug
+        end
+    end
+
+    private
+
+    def tripParams
+        params.require(:trip).permit(:start_date, :end_date, :destination_id, :user_id)
+    end 
+
 end
