@@ -14,7 +14,7 @@ API_KEY = ENV['exchangeRateApiKey']
 rates = JSON.parse(RestClient.get("http://data.fixer.io/api/latest?access_key=#{API_KEY}&base=usd"))
 i = 0
 while i < rates['rates'].length
-    Value.create(date: rates['date'], code: rates['rates'].keys[i], rate: rates['rates'].values[i]) 
+    Value.create(date: rates['date'], code: rates['rates'].keys[i], rate: rates['rates'].values[i].round(3)) 
 i += 1
 end
 
