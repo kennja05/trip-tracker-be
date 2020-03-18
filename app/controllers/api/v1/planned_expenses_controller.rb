@@ -10,5 +10,16 @@ class Api::V1::PlannedExpensesController < ApplicationController
         render json: plannedExpense 
     end 
 
+    def create
+        plannedExpense = PlannedExpense.new(plannedExpenseParams)
+        byebug
+    end 
+
+    private
+
+    def plannedExpenseParams
+        params.require(:planned_expense).permit(:date, :cost, :name, :category, :trip_id)
+    end 
+
 
 end
