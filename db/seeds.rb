@@ -39,3 +39,16 @@ Destination.all.each do |destination|
     matchingValue = Value.where(code: destination.code).last
     myCurrency = Currency.create(destination_id: destination.id, value_id: matchingValue.id) 
 end 
+
+destinationIds = Destination.all.pluck(:id)
+userIds = User.all.pluck(:id)
+startDate = Date.yesterday
+endDate = Date.tomorrow
+
+#seeding data for Trips
+# i = 0
+# while i < 100
+#     myTrip = Trip.create(destination_id: destinationIds.sample, user_id: userIds.sample, start_date: startDate, end_date: endDate)
+    
+#     i += 1
+# end
