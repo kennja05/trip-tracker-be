@@ -2,12 +2,12 @@ class Api::V1::TripsController < ApplicationController
 
     def index
         trips = Trip.all 
-        render json: trips
+        render json: trips, include: :destination
     end 
 
     def show
         trip = Trip.find(params['id'])
-        render json: trip 
+        render json: trip , include: :destination
     end 
 
     def create 
