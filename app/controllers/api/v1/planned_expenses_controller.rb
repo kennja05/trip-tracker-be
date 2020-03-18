@@ -12,7 +12,11 @@ class Api::V1::PlannedExpensesController < ApplicationController
 
     def create
         plannedExpense = PlannedExpense.new(plannedExpenseParams)
-        byebug
+        if plannedExpense.save
+            render json: plannedExpense
+        else
+            byebug
+        end
     end 
 
     private
