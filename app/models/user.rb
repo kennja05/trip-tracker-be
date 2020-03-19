@@ -8,7 +8,7 @@ validates :name, presence: true
 validates :username, uniqueness: true
 validates :password, presence: true
 validates :email, presence: true
-validates :phone, presence: true, length: { is: 9 }
+validates :phone, presence: true, length: { is: 10 }
 
 
 end
