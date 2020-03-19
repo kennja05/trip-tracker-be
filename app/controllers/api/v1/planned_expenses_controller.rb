@@ -15,7 +15,7 @@ class Api::V1::PlannedExpensesController < ApplicationController
         if plannedExpense.save
             render json: plannedExpense
         else
-            byebug
+            render json: {errors: plannedExpense.errors.full_messages}
         end
     end 
 
