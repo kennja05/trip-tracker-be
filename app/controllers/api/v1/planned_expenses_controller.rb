@@ -19,6 +19,13 @@ class Api::V1::PlannedExpensesController < ApplicationController
         end
     end 
 
+    def destroy
+        plannedExpense = PlannedExpense.find(params['id'])
+        
+        plannedExpense.destroy()
+        render json: plannedExpense
+    end
+
     private
 
     def plannedExpenseParams
