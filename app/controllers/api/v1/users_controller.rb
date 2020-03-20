@@ -22,7 +22,7 @@ class Api::V1::UsersController < ApplicationController
     def userTrips
         user = User.find(params['id'])
         myTrips = Trip.all.where(user_id: user.id)
-        render json: myTrips, include: :destination
+        render json: myTrips, include: [:destination, :values]
     end 
 
     private 
