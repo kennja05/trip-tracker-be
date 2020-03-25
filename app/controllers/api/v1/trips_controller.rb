@@ -19,6 +19,12 @@ class Api::V1::TripsController < ApplicationController
         end
     end
 
+    def destroy
+        trip = Trip.find(params['id'])
+        trip.destroy
+        render json: trip
+    end
+
     private
 
     def tripParams
