@@ -1,13 +1,7 @@
 require 'rest-client'
 require 'dotenv'
 
-# User.destroy_all
 # Destination.destroy_all
-# Value.destroy_all
-# Currency.destroy_all
-
-# user1 = User.create(name: 'Jacob', phone: '5707161763', username: 'kennja05', email: 'jacobkenny05@gmail.com', password: '123', image: 'https://humanorigins.si.edu/sites/default/files/styles/full_width/public/images/square/neanderthalensis_JG_Recon_Head_CC_3qtr_lt_sq.jpg?itok=65pnoWxu')
-# user2 = User.create(name: 'Megan', phone: '9087701138', username: 'mcdomeg24', email: 'meganmcdonald24@gmail.com', password: '123', image: '')
 
 #Creating the initial values for each currency. Ideally this will done on an hourly basis
 API_KEY = ENV['exchangeRateApiKey']
@@ -33,22 +27,9 @@ end
 #     end 
 # end 
 
-#Creating Currencies. The purpose of this is to allow for the destination to always have access to the most recent ER
 
+#Creating Currencies. The purpose of this is to allow for the destination to always have access to the most recent ER
 Destination.all.each do |destination| 
     matchingValue = Value.where(code: destination.code).last
     myCurrency = Currency.create(destination_id: destination.id, value_id: matchingValue.id) 
-end 
-
-destinationIds = Destination.all.pluck(:id)
-userIds = User.all.pluck(:id)
-startDate = Date.yesterday
-endDate = Date.tomorrow
-
-#seeding data for Trips
-# i = 0
-# while i < 100
-#     myTrip = Trip.create(destination_id: destinationIds.sample, user_id: userIds.sample, start_date: startDate, end_date: endDate)
-    
-#     i += 1
-# end
+end

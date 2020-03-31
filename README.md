@@ -1,28 +1,28 @@
-# README
+*Languages Used
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Javascript, React, HTML, CSS
 
-Things you may want to cover:
+*Background
 
-* Ruby version
+When planning a trip a lot of people like to make a budget for their expenses. Someone like myself could budget $500 for food and $1000 for the hotel stay, or a better planner than I might want to build out a table with various types of expenses detailing exactly how much will be spent for each expense. I would say that either way is fine, but something that many would not consider during the planning process of a trip to the foreign country, is that the exchange rate of the United States Dollar to the foreign currency is constantly changing. Now all of the sudden that dinner that I had planned for 30 euros, which originally was going to cost me 54 USD will now coast me 55 USD! 
 
-* System dependencies
+On a small scale I think we can all agree that it will not have that much of an effect. However, what if we were going to stay for a long time, or were planning a stay in a high-end boutique hotel? That 1.8% change that I mentioned above could start to make a difference once the scope of the spending gets larger. 
 
-* Configuration
+*Purpose
 
-* Database creation
+The goal of this application is to allow for users to budget trips to foreign countries while getting real-time information about the exchange rate of that country's currency to the US Dollar, thus allowing the user to make an informed decision about when to exchange their currency.
 
-* Database initialization
+*Instructions
 
-* How to run the test suite
+This repo serves as the backend for the companion repo https://github.com/kennja05/trip-tracker-fe
 
-* Services (job queues, cache servers, search engines, etc.)
+    1) Setup
+        a) Obtain the basic plan API key from fixer.io
+        b) In line 13 of seeds.rb replace "ENV['exchangeRateApiKey']" with your  API key
+        c) In seeds.rb make sure that lines 17-28 are not commented out, then run rails db:create, followed by rails db:seed
+            - After the initial seed is successul please either delete, or comment out lines 17-28 from seeds.rb
+            - For best results run the command rails db:seed once per day
 
-* Deployment instructions
-
-* ...
-
-* This will serve as the backend for the Trip Tracker Project. The main purpose of the project is to allow for users to plan trips to foreign countries, and input the expenses that they anticipate in the unit of currency for whichever country they are visiting. 
-
-* The app will then actively convert the amount of planned expenses to dollars, and show the user over time how much the actual cost of the trip (in US Dollars) is changing. 
+    2) Usage
+        a) Run the command 'rails server' or 'rails s' in the terminal
+        b) Locate the front end at https://github.com/kennja05/trip-tracker-fe and follow the steps listed there to complete setup of the application
