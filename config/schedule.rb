@@ -5,7 +5,8 @@
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
+set :environment, "development"
+set :output, 'log/cron.log'
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -13,7 +14,7 @@
 #   rake "some:great:rake:task"
 # end
 #
-every 2.minutes do
+every 2.hours do
   rake "db:seed"
 end
 
