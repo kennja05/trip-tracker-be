@@ -14,8 +14,9 @@ set :output, 'log/cron.log'
 #   rake "some:great:rake:task"
 # end
 #
-every 2.hours do
+every 3.hours do
   rake "db:seed"
+  puts "obtained newest info"
 end
 
 # Learn more: http://github.com/javan/whenever
