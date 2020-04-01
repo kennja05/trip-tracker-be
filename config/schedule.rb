@@ -15,8 +15,7 @@ set :output, 'log/cron.log'
 # end
 #
 every 3.hours do
-  rake "db:seed"
-  puts "obtained newest info"
+  runner "RateGetter.obtainNewestRates"
 end
 
 # Learn more: http://github.com/javan/whenever
