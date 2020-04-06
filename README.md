@@ -17,11 +17,14 @@ The goal of this application is to allow for users to budget trips to foreign co
 This repo serves as the backend for the companion repo https://github.com/kennja05/trip-tracker-fe
 
     1) Setup
-        a) Obtain the basic plan API key from fixer.io
-        b) In line 13 of seeds.rb replace "ENV['exchangeRateApiKey']" with your  API key
-        c) In seeds.rb make sure that lines 17-28 are not commented out, then run rails db:create, followed by rails db:seed
-            - After the initial seed is successul please either delete, or comment out lines 17-28 from seeds.rb
-            - For best results run the command rails db:seed once per day
+        a) Clone down this repo, then run the command 'cd trip-tracker-be'
+        b) Obtain the basic plan API key from fixer.io (feel free to message me and I would be happy to share mine)
+        c) Run the command 'bundle install'
+        d) In line 6 of rate_getter.rb replace "ENV['exchangeRateApiKey']" with your API key
+        e) Run the following commands in your terminal in order
+            i) rails db:migrate
+            ii) rails db:seed
+            iii) whenever --update-crontab
 
     2) Usage
         a) Run the command 'rails server' or 'rails s' in the terminal
