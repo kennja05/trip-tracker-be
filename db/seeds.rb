@@ -2,7 +2,7 @@ require 'rest-client'
 
 # Destination.destroy_all
 
-Creating destination to match with currency codes. I have selected the most-relevant currecies for destinations with multiple options 
+# Creating destination to match with currency codes. I have selected the most-relevant currecies for destinations with multiple options 
 destinations = JSON.parse(RestClient.get('https://restcountries.eu/rest/v2/all'))
 destinations.each do |country|
     if country['name'] != "South Sudan" #The ER tracker does not have the South Sudan Pound Available, and the Countries API lists no alternate Currencies
