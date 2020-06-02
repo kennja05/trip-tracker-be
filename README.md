@@ -33,9 +33,7 @@ Instructions
     a) Once the site is running visit localhost:3001/login
     
     b) Sign up for a new account, or feel free to message me to get the log in credentials for the test account
-    
-        - I strongly suggest not using a password that you use for other sites
-        
+            
     c) Once logged in there are three main options
         
 Features
