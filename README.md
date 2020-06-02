@@ -28,11 +28,13 @@ Instructions
       
     d) In line 6 of rate_getter.rb replace "ENV['exchangeRateApiKey']" with your API key  
       
-    e) Run the following commands in your terminal in order	
+    e) Run the following commands in your terminal in order:	
       
-      i) `rails db:migrate`	
-      ii) `rails db:seed`	
-      iii) `whenever --update-crontab`	
+        i) `rails db:migrate`	
+      
+        ii) `rails db:seed`	
+      
+        iii) `whenever --update-crontab`	
 
 2) Usage
 
