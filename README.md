@@ -20,9 +20,9 @@ Instructions
 
     1) Setup
         a) Locate the backend at https://github.com/kennja05/trip-tracker-be and follow the instructions to get it started.
-        b) Clone this repo to the local machine and run the command 'cd trip-tracker-fe' in your terminal
-        c) Enter the command 'npm install' in your terminal 
-        d) Enter the command 'npm start' in your terminal
+        b) Clone this repo to the local machine and run the command `cd trip-tracker-fe` in your terminal
+        c) Enter the command `npm install` in your terminal 
+        d) Enter the command `npm start` in your terminal
 
     2) Usage
         a) Once the site is running visit localhost:3001/login
