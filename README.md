@@ -19,22 +19,26 @@ Instructions
 ============
 
 1) Setup
-    
-    a) Locate the backend at https://github.com/kennja05/trip-tracker-be and follow the instructions to get it started.
-    
-    b) Clone this repo to the local machine and run the command `cd trip-tracker-fe` in your terminal
-    
-    c) Enter the command `npm install` in your terminal 
-    
-    d) Enter the command `npm start` in your terminal
-    
+
+    a) Clone down this repo, then run the command `cd trip-tracker-be`
+        
+    b) Obtain the basic plan API key from fixer.io (feel free to message me and I would be happy to share mine)	
+      
+    c) Run the command `bundle install`	 
+      
+    d) In line 6 of rate_getter.rb replace "ENV['exchangeRateApiKey']" with your API key  
+      
+    e) Run the following commands in your terminal in order	
+      
+      i) `rails db:migrate`	
+      ii) `rails db:seed`	
+      iii) `whenever --update-crontab`	
+
 2) Usage
-    
-    a) Once the site is running visit localhost:3001/login
-    
-    b) Sign up for a new account, or feel free to message me to get the log in credentials for the test account
-            
-    c) Once logged in there are three main options
+
+    a) Run the command `rails server` or `rails s` in the terminal
+        
+    b) Locate the front end at https://github.com/kennja05/trip-tracker-fe and follow the steps listed there to complete setup of the application
         
 Features
 ========
