@@ -18,17 +18,25 @@ https://www.youtube.com/watch?v=IqXq84IiZ14
 Instructions
 ============
 
-    1) Setup
-        a) Locate the backend at https://github.com/kennja05/trip-tracker-be and follow the instructions to get it started.
-        b) Clone this repo to the local machine and run the command `cd trip-tracker-fe` in your terminal
-        c) Enter the command `npm install` in your terminal 
-        d) Enter the command `npm start` in your terminal
-
-    2) Usage
-        a) Once the site is running visit localhost:3001/login
-        b) Sign up for a new account, or feel free to message me to get the log in credentials for the test account
-            - I strongly suggest not using a password that you use for other sites
-        c) Once logged in there are three main options - add new a trip, view and edit current/previous trips, and get        information for all tracked currencies 
+1) Setup
+    
+    a) Locate the backend at https://github.com/kennja05/trip-tracker-be and follow the instructions to get it started.
+    
+    b) Clone this repo to the local machine and run the command `cd trip-tracker-fe` in your terminal
+    
+    c) Enter the command `npm install` in your terminal 
+    
+    d) Enter the command `npm start` in your terminal
+    
+2) Usage
+    
+    a) Once the site is running visit localhost:3001/login
+    
+    b) Sign up for a new account, or feel free to message me to get the log in credentials for the test account
+    
+        - I strongly suggest not using a password that you use for other sites
+        
+    c) Once logged in there are three main options
         
 Features
 ========
