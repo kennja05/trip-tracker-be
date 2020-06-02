@@ -14,7 +14,7 @@ gem 'puma', '~> 4.3'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -27,6 +27,16 @@ gem 'rack-cors'
 
 #for seeding DB with countries from Country/Currency APIs
 gem 'rest-client', '~> 2.1'
+
+#updating to newest version for security
+gem "activesupport", ">= 6.0.3.1"
+gem "actionpack", ">= 6.0.3.1"
+gem "activestorage", ">= 6.0.3.1"
+gem "actionview", ">= 6.0.2.2"
+
+
+
+
 
 #for keeping currencyExchange API key secret
 gem 'dotenv-rails', groups: [:development, :test]
