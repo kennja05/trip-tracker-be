@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     end
   end
   
-  get 'api/v1/destinations/top', to: 'api/v1/destinations#topDestinations'
+  get '/api/v1/destinations/top', to: 'api/v1/destinations#topDestinations'
   get '/api/v1/destinations/top/all', to: 'api/v1/destinations#orderedDestinations'
   namespace :api do
     namespace :v1 do
@@ -32,7 +32,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'api/v1/users/:id/trips', to: 'api/v1/users#userTrips'
+  get '/api/v1/users/login/:username/:password_digest', to: 'api/v1/users#login'
+  get '/api/v1/users/:id/trips', to: 'api/v1/users#userTrips'
   namespace :api do
     namespace :v1 do
       resources :users

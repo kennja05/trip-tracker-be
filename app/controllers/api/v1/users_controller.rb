@@ -5,6 +5,28 @@ class Api::V1::UsersController < ApplicationController
         render json: users
     end 
 
+    def login
+        user = User.find_by(username: params['username'])
+        if !user
+            render json: null
+        else
+            if user.password_digest === (params['password_digest'])
+                render json: user
+            else
+                render json: null
+            end
+        end
+    end 
+
+    # def login
+    #     @user = User.find_by_email(params[:email])
+    #     if @user.password == params[:password]
+    #       give_token
+    #     else
+    #       redirect_to home_url
+    #     end
+    # end
+
     def show
         user = User.find(params['id'])
         render json: user
@@ -28,7 +50,7 @@ class Api::V1::UsersController < ApplicationController
     private 
 
     def userParams
-        params.require(:user).permit(:name, :username, :password, :image, :phone, :email)
+        params.require(:user).permit(:username, :password_digest, :phone)
     end 
 
 end
