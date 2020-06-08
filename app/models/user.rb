@@ -7,11 +7,13 @@ class User < ApplicationRecord
     has_many :destinations, through: :trips
     validates :username, uniqueness: { case_sensitive: false }
     validates :phone, presence: true, length: { is: 10 }
+    validate :password_must_be_strong
+    
 
-    # def password_must_be_strong
-    #     if password_digest.length < 3
-    #         errors.add(:password_digest, 'Password must be longer than 3 characters')
-    #     end
-    # end
+    def password_must_be_strong
+        if password_digest.length < 3
+            errors.add(:password, 'must be longer than 3 characters')
+        end
+    end
 
 end

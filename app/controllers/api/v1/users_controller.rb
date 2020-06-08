@@ -13,7 +13,7 @@ class Api::V1::UsersController < ApplicationController
             if user.password_digest === (params['password_digest'])
                 render json: user
             else
-                render json: null
+                render json: nil
             end
         end
     end 
@@ -26,7 +26,6 @@ class Api::V1::UsersController < ApplicationController
  
     def create 
         user = User.new(userParams)
-        byebug
         if user.save
             render json: user
         else  
