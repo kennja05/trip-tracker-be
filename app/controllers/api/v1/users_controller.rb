@@ -28,7 +28,6 @@ class Api::V1::UsersController < ApplicationController
     def create 
         user = User.new(username: params[:username], phone: params[:phone], 
             password: params[:password], password_confirmation: params[:passwordConfirmation])
-        byebug
         if user.save
             render json: user
         else  
