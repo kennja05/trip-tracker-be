@@ -10,9 +10,10 @@ class Api::V1::UsersController < ApplicationController
         if !user
             render json: nil
         else
-            if user.password_digest === (params['password_digest'])
+            if user.authenticate(params['password'])
                 render json: user
             else
+                byebug
                 render json: nil
             end
         end
@@ -25,7 +26,9 @@ class Api::V1::UsersController < ApplicationController
     end 
  
     def create 
-        user = User.new(userParams)
+        user = User.new(username: params[:username], phone: params[:phone], 
+            password: params[:password], password_confirmation: params[:passwordConfirmation])
+        byebug
         if user.save
             render json: user
         else  
@@ -33,7 +36,7 @@ class Api::V1::UsersController < ApplicationController
         end
     end
 
-    def userTrips
+    def user_trips
         user = User.find(params['id'])
         myTrips = Trip.all.where(user_id: user.id).sort_by {|trip| trip.start_date}
         render json: myTrips, include: [:destination, :values]
@@ -41,8 +44,8 @@ class Api::V1::UsersController < ApplicationController
 
     private 
 
-    def userParams
-        params.require(:user).permit(:username, :password_digest, :phone)
+    def user_params
+        params.require(:user).permit(:username, :password, :passwordConfirmation, :phone)
     end 
 
 end

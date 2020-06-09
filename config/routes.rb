@@ -32,8 +32,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/api/v1/users/login/:username/:password_digest', to: 'api/v1/users#login'
-  get '/api/v1/users/:id/trips', to: 'api/v1/users#userTrips'
+  get '/api/v1/users/login/:username/:password', to: 'api/v1/users#login'
+  get '/api/v1/users/:id/trips', to: 'api/v1/users#user_trips'
   namespace :api do
     namespace :v1 do
       resources :users
