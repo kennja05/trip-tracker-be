@@ -13,7 +13,6 @@ class Api::V1::UsersController < ApplicationController
             if user.authenticate(params['password'])
                 render json: user
             else
-                byebug
                 render json: nil
             end
         end
