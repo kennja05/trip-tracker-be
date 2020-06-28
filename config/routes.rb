@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
   
   get '/api/v1/destinations/top', to: 'api/v1/destinations#topDestinations'
-  get '/api/v1/destinations/top/all/:index', to: 'api/v1/destinations#orderedDestinations'
+  get '/api/v1/destinations/top/all/', to: 'api/v1/destinations#orderedDestinations'
   namespace :api do
     namespace :v1 do
       resources :destinations
