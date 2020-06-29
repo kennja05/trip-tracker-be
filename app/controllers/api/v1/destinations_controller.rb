@@ -12,12 +12,12 @@ class Api::V1::DestinationsController < ApplicationController
 
     def topDestinations 
         topDestinations = Destination.all.sort_by {|destination| destination.trips.count}.reverse.slice(0,20)
-        render json: topDestinations, include: [:trips, :values, :users]
+        render json: topDestinations, include: [:trips]
     end
 
     def orderedDestinations
         topDestinations = Destination.all.sort_by {|destination| destination.trips.count}.reverse
-        render json: topDestinations, include: [:trips, :values]
+        render json: topDestinations, except: [:created_at, :updated_at, :image]
     end 
 
 end
