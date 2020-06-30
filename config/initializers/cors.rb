@@ -7,7 +7,15 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins '*' #should look in to updating this before things get too crazy
+    origins 'trip-tracker.netlify.app' 
+
+    resource '*',
+      headers: :any,
+      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+  end
+
+  allow do
+    origins 'localhost:3001' 
 
     resource '*',
       headers: :any,
