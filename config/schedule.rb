@@ -14,9 +14,6 @@ set :output, 'log/cron.log'
 #   rake "some:great:rake:task"
 # end
 #
-every 3.hours do
-  runner "RateGetter.obtainNewestRates"
-end
 
 every 8.hours do
   runner "Rate.getRates"
