@@ -7,7 +7,7 @@ class Api::V1::DestinationsController < ApplicationController
 
     def show
         destination = Destination.find(params['id'])
-        render json: destination, include: :values
+        render json: destination
     end 
 
     def topDestinations 

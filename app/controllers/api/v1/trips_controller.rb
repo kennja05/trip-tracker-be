@@ -7,7 +7,7 @@ class Api::V1::TripsController < ApplicationController
 
     def show
         trip = Trip.find(params['id'])
-        render json: trip , include: [:destination, :user, :planned_expenses, :values] 
+        render json: trip , include: [:destination, :user, :planned_expenses] 
     end 
 
     def create 

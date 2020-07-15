@@ -37,7 +37,7 @@ class Api::V1::UsersController < ApplicationController
     def user_trips
         user = User.find(params['id'])
         myTrips = Trip.all.where(user_id: user.id).sort_by {|trip| trip.start_date}
-        render json: myTrips, include: [:destination, :values]
+        render json: myTrips, include: [:destination]
     end 
 
     private 
