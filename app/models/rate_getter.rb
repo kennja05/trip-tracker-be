@@ -19,10 +19,4 @@ class RateGetter < ApplicationRecord
         end
     end 
 
-    def self.getRates
-        key = ENV['exchangeRateApiKey']
-        regex = /[A-Z]{3}/
-        rates = JSON.parse(RestClient.get("http://data.fixer.io/api/latest?access_key=#{key}&base=usd")).to_s.scan(regex)
-        Rate.create(rate_list: rates)
-    end
 end 
