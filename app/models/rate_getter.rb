@@ -3,7 +3,7 @@ require 'rest-client'
 
 class RateGetter < ApplicationRecord
 
-    # @@API_KEY = ENV['exchangeRateApiKey']
+    @@API_KEY = ENV['exchangeRateApiKey']
 
     def self.obtainNewestRates 
         key = ENV['exchangeRateApiKey']
@@ -18,4 +18,11 @@ class RateGetter < ApplicationRecord
             myCurrency = Currency.create(destination_id: destination.id, value_id: matchingValue.id) 
         end
     end 
+
+    def self.getRates
+        key = ENV['exchangeRateApiKey']
+        regex = /[A-Z]{3}/
+        rates = JSON.parse(RestClient.get("http://data.fixer.io/api/latest?access_key=#{key}&base=usd")).to_s.scan(regex)
+        Rate.create(rate_list: rates)
+    end
 end 

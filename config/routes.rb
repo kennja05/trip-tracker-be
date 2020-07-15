@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   
+  namespace :api do
+    namespace :v1 do
+      resources :rates
+    end
+  end
   get 'api/v1/todays_values', to: 'api/v1/values#todaysValues'
   namespace :api do
     namespace :v1 do
