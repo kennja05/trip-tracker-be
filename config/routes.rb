@@ -1,28 +1,19 @@
 Rails.application.routes.draw do
   
+  get '/api/v1/newRates', to: 'api/v1/rates#mostRecent'
+  get '/api/v1/rates/:date/:code', to: 'api/v1/rates#ratesAtCreation'
   namespace :api do
     namespace :v1 do
       resources :rates
     end
   end
-  get 'api/v1/todays_values', to: 'api/v1/values#todaysValues'
-  namespace :api do
-    namespace :v1 do
-      resources :values
-    end
-  end
+  
   namespace :api do 
     namespace :v1 do
       resources :planned_expenses
     end
   end
   
-  namespace :api do 
-    namespace :v1 do
-      resources :currencies
-    end
-  end
-
   namespace :api do
     namespace :v1 do
       resources :trips
