@@ -20,8 +20,12 @@ class Api::V1::UsersController < ApplicationController
 
 
     def show
-        user = User.find(params['id'])
-        render json: user
+        if User.exists?(params['id'])
+            user = User.find(params['id'])
+            render json: user
+        else
+            render json: {"error" => 'No user Found!'}
+        end
     end 
  
     def create 
