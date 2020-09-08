@@ -22,7 +22,7 @@ class Api::V1::UsersController < ApplicationController
     def show
         if User.exists?(params['id'])
             user = User.find(params['id'])
-            render json: user
+            render json: user, include: :trips
         else
             render json: {"error" => 'No user Found!'}
         end
@@ -36,6 +36,10 @@ class Api::V1::UsersController < ApplicationController
         else  
             render json: {'errors' => user.errors.full_messages} 
         end
+    end
+
+    def update
+        byebug
     end
 
     def user_trips

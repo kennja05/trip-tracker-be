@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # put '/api/v1/users/:id/edit', to: 'api/v1/users#edit'
   get '/api/v1/users/login/:username/:password', to: 'api/v1/users#login'
   get '/api/v1/users/:id/trips', to: 'api/v1/users#user_trips'
   namespace :api do
