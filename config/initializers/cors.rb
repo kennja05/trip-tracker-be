@@ -23,7 +23,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   end
 
   allow do
-    origins 'http://penguin.linux.test:3001/' 
+    origins '*' 
 
     resource '*',
       headers: :any,
