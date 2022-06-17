@@ -6,5 +6,4 @@ class User < ApplicationRecord
     has_many :destinations, through: :trips
     validates :username, uniqueness: { case_sensitive: false }, length: {minimum: 5} 
     
-
 end

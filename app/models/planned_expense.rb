@@ -10,5 +10,4 @@ class PlannedExpense < ApplicationRecord
         end
     end 
 
-
 end
