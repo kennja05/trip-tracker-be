@@ -1,9 +1,11 @@
 require 'rest-client'
 require 'byebug'
 Destination.destroy_all
-
+rateKey = ENV["exchangeRateApiKey"]
 # Creating destination to match with currency codes. I selected the most-relevant currecies for destinations with multiple options 
 destinations = JSON.parse(RestClient.get("https://restcountries.com/v3.1/all"))
+destinations = destinations.select {|country| country["currencies"]}
+availableRates = JSON.parse(RestClient.get("http://data.fixer.io/api/latest?access_key=#{rateKey}&base=usd"))
 destinations.each do |country|
     byebug
     if country["name"]["common"] != "South Sudan" #The ER tracker does not have the South Sudan Pound Available, and the Countries API lists no alternate Currencies
