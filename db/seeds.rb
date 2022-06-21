@@ -6,6 +6,17 @@ rateKey = ENV["exchangeRateApiKey"]
 destinations = JSON.parse(RestClient.get("https://restcountries.com/v3.1/all"))
 destinations = destinations.select {|country| country["currencies"]}
 availableRates = JSON.parse(RestClient.get("http://data.fixer.io/api/latest?access_key=#{rateKey}&base=usd"))
+
+#countries that have multiple currencies to choose from - 19
+#countries that are not choosing the first one available
+#Cook Islands - 1
+#Palestine - 1
+#Saint Helena, Asencion and Tristan da Cunha - 1
+#Cuba - 1
+#Jersey - 1
+#Isle of Man - 1
+#Guernsey - 1
+
 destinations.each do |country|
     byebug
     if country["name"]["common"] != "South Sudan" #The ER tracker does not have the South Sudan Pound Available, and the Countries API lists no alternate Currencies
