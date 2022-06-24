@@ -16,16 +16,22 @@ availableRates = JSON.parse(RestClient.get("http://data.fixer.io/api/latest?acce
 #Jersey - 1
 #Isle of Man - 1
 #Guernsey - 1
-
+ 
+#Macau does not have a capital
+#dont have available currency
+#South Sudan, Sao Tome and Principe, Mauritania - will just assign USD
 destinations.each do |country|
     byebug
-    if country["name"]["common"] != "South Sudan" #The ER tracker does not have the South Sudan Pound Available, and the Countries API lists no alternate Currencies
-        if country['name']["common"] === "Antarctica" || country['name']["common"] === "Virgin Islands (British)" || country['name']["common"] === "Micronesia (Federated States of)" || country['name']["common"] === "Palau" || country['name']["common"] === "Singapore"
-            Destination.create(image: country['flag'], name: country['name']["common"], native_name: country['nativeName'], capital: country['capital'][0], code: country['currencies'][1]['code'], symbol: country['currencies'][1]['symbol'], currency_name: country['currencies'][1]['name'])
-        elsif country['name']["common"] === "Zimbabwe"
-            Destination.create(image: country['flag'], name: country['name']["common"], native_name: country['nativeName'], capital: country['capital'][0], code: country['currencies'][7]['code'], symbol: country['currencies'][7]['symbol'], currency_name: country['currencies'][7]['name'])
-        else
-            Destination.create(image: country['flag'], name: country['name']["common"], native_name: country['nativeName'], capital: country['capital'][0], code: country['currencies'][0]['code'], symbol: country['currencies'][0]['symbol'], currency_name: country['currencies'][0]['name'])    
-        end
+    if country["name"]["common"] != "South Sudan" #The ER tracker does not have the South Sudan Pound Available, and the Countries API lists no alternate Currencies 
+        Destination.create(
+        image: country['flag'],
+        name: country['name']["common"], 
+        native_name: country["name"]['nativeName'][country["name"]["nativeName"].keys[0]]["common"], 
+        capital: country["capital"] ? country['capital'][0] : "No Capital City", 
+        code: country["currencies"].keys[0], 
+        symbol: country["currencies"][country["currencies"].keys[0]]["symbol"], 
+        currency_name: country["currencies"][country["currencies"].keys[0]]["name"]
+        )    
     end 
 end
+
